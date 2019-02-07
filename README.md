@@ -137,59 +137,62 @@ Create your free Okta developer tenant. Sign in as an admin for the following
 
 6. The newly created users will be created in a PROVISIONED state with "isPassswordInOkta" set to false and via the group rule automatically be assigned the ODIC web application.
 
-##2.Create a custom login page
+## 2. Create a Custom Login Page
+
 On a Windows server install the IIS server role as well as ASP..Net 4.6.1 and .Net 4.71. Additionally if you plan to edit the project you will need Visual Studio Community 2017, which is free.
 
+![Okta Windows Server Roles Wizard](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-windows-server-roles-wizard.png)
 
 Once IIS is installed, create a new website and application pool called "LDAP Migration." Place the compiled folder structure in the default web directory.
 
-##3.Configure variables for your tenant.
-With the web server built and web directory in place, browse to the web directory (c:\intetpub\wwwroot\LDAPmigration). Edit web.config and change the following variables:
+![Okta Migration App in IIS](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-migration-app-in-iis.png)
 
+![Okta Migration App Web Directory](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-migration-app-web-directory.png)
+
+## 3. Configure Variables for Your Tenant
+
+With the web server built and web directory in place, browse to the web directory (`c:\intetpub\wwwroot\LDAPmigration`). Edit web.config and change the following variables:
+
+```
 <add key="okta.ApiUrl" value="YOUR_OKTA_TENANT" />
-    <add key="okta.ApiToken" value="YOUR_OKTA_TENANT_API_TOKEN" />
-      <!-- use web for sp_int workflow-->
-      <add key="oidc.spintweb.clientId" value="YOUR_OKTA_OIDCAPP_CLIENTID" />
- <add key="oidc.spintweb.clientSecret" value="YOUR_OKTA_OIDCAPP_CLIENTSECRET" />
+<add key="okta.ApiToken" value="YOUR_OKTA_TENANT_API_TOKEN" />
+<!-- use web for sp_int workflow-->
+<add key="oidc.spintweb.clientId" value="YOUR_OKTA_OIDCAPP_CLIENTID" />
+<add key="oidc.spintweb.clientSecret" value="YOUR_OKTA_OIDCAPP_CLIENTSECRET" />
 <add key="oidc.spintweb.RedirectUri_Implicit" value="OIDC_APP_REDIRECT_URI" />
 <add key="oidc.spintweb.RedirectUri_AuthCode" value="OIDC_APP_REDIRECT_URI"/>
-      <add key="oidc.issuer" value="YOUR_OKTA_TENANT_ISSUER" />
-      <!-- ldap config-->
-      <add key="ldap.server" value="YOUR_LDAP_SERVER" />
-      <add key="ldap.port" value="YOUR_LDAP_SERVER_PORT" />
-      <add key="ldap.baseDn" value=",YOUR_LDAP_SERVER_BASE_DN" />
+<add key="oidc.issuer" value="YOUR_OKTA_TENANT_ISSUER" />
+<!-- ldap config-->
+<add key="ldap.server" value="YOUR_LDAP_SERVER" />
+<add key="ldap.port" value="YOUR_LDAP_SERVER_PORT" />
+<add key="ldap.baseDn" value=",YOUR_LDAP_SERVER_BASE_DN" />
+```
 
 Once complete, save web.config and restart the IIS server.
 
 You should now have all the pieces in place to perform a login.
-An Okta tenant for which to migrate your users with an OIDC app
-Sample users in a PROVISIONED state
-A web server (IIS) to host your custom login page with all the variables specific to you Okta tenant and LDAP server.
-##5.Login
+
+1. An Okta tenant for which to migrate your users with an OIDC app
+2. Sample users in a PROVISIONED state
+3. A web server (IIS) to host your custom login page with all the variables specific to you Okta tenant and LDAP server.
+
+## 5. Login
+
 Now that the uses are created in Okta, in a "provisioned" state and the custom login page is up and running, browse to the custom login page and login as a user. The user will be authenticated against the LDAP server, their password set in Okta and finally be redirected to the OIDC web app.
 
+![Okta Custom Sign-In Page](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-custom-sign-in-page.png)
 
+![Okta Authenticate Into App](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-authenticate-into-app.png)
 
+![Okta LDAP Migration Flow](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-ldap-migration-flow.png)
 
+## Appendix
 
-##Appendix
-###Resources to the project and compiled web directory
-
-Github links:
-
-Project:
-
-****PENDING****
-
-Compiled Web files:
-
-****PENDING****
-
-###Changes to the project
+### Changes to the Project
 
 The base project is enough to get you up and running but if changes to the project are needed they must be made in Visual Studio. Upon completion you must publish the web directory to use the changes. To do so:
-RIght click on the project in the project explorer
-Select Publish
-Publish method is defaulted to File System simply press Publish
-The web directory files will be updated with the new version
 
+1. Right click on the project in the project explorer
+2. Select Publish
+3. Publish method is defaulted to File System simply press Publish
+4. The web directory files will be updated with the new version
