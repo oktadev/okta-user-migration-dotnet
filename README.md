@@ -49,14 +49,15 @@ Create your free Okta developer tenant. Sign in as an admin for the following
    ![Okta Create Token](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-create-token.png)
 
 2. Enable [CORS](https://developer.okta.com/docs/api/getting_started/enabling_cors) for your localhost app Example: http://localhost:10100
-3. Using the [Profile Editor](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm?cshid=ext_Directory_Profile_Editor) create two new attributes:
 
-Type
-Name
-Boolean
-isPasswordInOkta
-String
-migration_app
+   ![Okta Add Origin](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-add-origin.png)
+
+3. Using the [Profile Editor](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm?cshid=ext_Directory_Profile_Editor) create two new attributes: 
+
+   | Type    | Name             |
+   |---------|------------------|
+   | Boolean | isPasswordInOkta |
+   | String  | migration_app    |
 
 Create an [OIDC web app](https://help.okta.com/en/prod/Content/Topics/Apps/Apps_App_Integration_Wizard.htm?Highlight=app%20integration) with the following options, then copy the Client ID and Client Secret(save for later).
 1.Enable implicit flow
