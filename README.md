@@ -40,12 +40,16 @@ At a high level, a prestaged user in a PROVISIONED state will browse to a custom
 
 Lets begin.
 
-##1.Okta configuration
+## 1.Okta Configuration
 
 Create your free Okta developer tenant. Sign in as an admin for the following
-Create an [API token](https://developer.okta.com/docs/api/getting_started/getting_a_token) (save for later)
-Enable [CORS](https://developer.okta.com/docs/api/getting_started/enabling_cors) for your localhost app Example: http://localhost:10100
-Using the [Profile Editor](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm?cshid=ext_Directory_Profile_Editor) create two new attributes:
+
+1. Create an [API token](https://developer.okta.com/docs/api/getting_started/getting_a_token) (save for later)
+
+   ![Okta Create Token](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-create-token.png)
+
+2. Enable [CORS](https://developer.okta.com/docs/api/getting_started/enabling_cors) for your localhost app Example: http://localhost:10100
+3. Using the [Profile Editor](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm?cshid=ext_Directory_Profile_Editor) create two new attributes:
 
 Type
 Name
