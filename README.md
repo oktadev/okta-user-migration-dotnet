@@ -10,10 +10,10 @@ some .NET code.*
 Migrating users to a new database can be thought of in two components: profile migration and credential migration.
 
 - Profile migration is the migration of users and their metadata. This typically can be accomplished via an import and an API.
-- Credential migration is the process of migrating a user’s existing password, which can provide some difficulty.
+- Credential migration is the process of migrating a user's existing password, which can provide some difficulty.
 
 When planning a migration, take into consideration how both profile and credentials will be
-migrated. This configuration is designed to authenticate a user against an existing LDAP directory, upon successful authentication the user’s credentials are then migrated to Okta and the user is signed into an OIDC application. The full project linked to this article can be used as a base for various migration methods thus can be used to migrate credentials from various sources.
+migrated. This configuration is designed to authenticate a user against an existing LDAP directory, upon successful authentication the user's credentials are then migrated to Okta and the user is signed into an OIDC application. The full project linked to this article can be used as a base for various migration methods thus can be used to migrate credentials from various sources.
 
 For more information on the migration methods, please visit our [whitepaper](https://www.okta.com/resources/whitepaper-okta-user-migration-guide/) on user migrations.This document will cover a Hybrid Live migration. In this type of migration the following assumptions are made.
 
@@ -36,7 +36,7 @@ To begin you will need the following:
 
 ![Okta Migration Flow](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-migration-flow.png)
 
-At a high level, a prestaged user in a PROVISIONED state will browse to a custom login page that utilizes the Okta Sign In widget. When the user logins to the page, their credentials will be sent to the existing LDAP server. The credentials will be authenticated against the LDAP server. Upon a successful login & response, the Okta Users API will set the LDAP password as the User's Okta password to complete the credential migration process. A boolean attribute is used to determine a user’s migration status.
+At a high level, a prestaged user in a PROVISIONED state will browse to a custom login page that utilizes the Okta Sign In widget. When the user logins to the page, their credentials will be sent to the existing LDAP server. The credentials will be authenticated against the LDAP server. Upon a successful login & response, the Okta Users API will set the LDAP password as the User's Okta password to complete the credential migration process. A boolean attribute is used to determine a user's migration status.
 
 Lets begin.
 
@@ -52,68 +52,91 @@ Create your free Okta developer tenant. Sign in as an admin for the following
 
    ![Okta Add Origin](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-add-origin.png)
 
-3. Using the [Profile Editor](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm?cshid=ext_Directory_Profile_Editor) create two new attributes: 
+3. Using the [Profile Editor](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm?cshid=ext_Directory_Profile_Editor) create two new attributes:
 
    | Type    | Name             |
    |---------|------------------|
    | Boolean | isPasswordInOkta |
    | String  | migration_app    |
 
-Create an [OIDC web app](https://help.okta.com/en/prod/Content/Topics/Apps/Apps_App_Integration_Wizard.htm?Highlight=app%20integration) with the following options, then copy the Client ID and Client Secret(save for later).
-1.Enable implicit flow
-2.Set "Login Redirect URI’s" to "http://localhost:10100/authcallback"
-Create a [Group](https://help.okta.com/en/prod/Content/Topics/Directory/Directory_Groups.htm?cshid=Directory_Groups#Directory_Groups) called "Migration App"
-Assign the"Migration App" group to the app created in step 4
-Create a [group rule](https://help.okta.com/en/prod/Content/Topics/Directory/Directory_Groups.htm) that states "IF user.migration_app equals "true" THEN Assign to "Migration App"
+   ![Okta Profile Editor](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-profile-editor.png)
 
-Using the Okta API, create your users in a [PROVISIONED state](https://developer.okta.com/docs/api/resources/users#create-user-without-credentials)
-To Create provisioned user:
-POST /api/v1/users?activate=true HTTP/1.1
-Host: ORG.okta.com
-Accept: application/json
-Content-Type: application/json
-Authorization: SSWS TOKEN
-cache-control: no-cache
-Postman-Token: 18c2532b-2357-4adb-9755-24676877
-{
-  	"profile": {
-   	 "firstName": "FIRST",
-   	 "lastName": "LAST",
-    	"email": "FIRST.LAST@DOMAIN.com",
-    	"login": "FIRST.LAST@DOMAIN.com",
-   	 "migration_app": "true"
-    	"isPasswordInOkta":false
-  	}
-    }
+4. Create an [OIDC web app](https://help.okta.com/en/prod/Content/Topics/Apps/Apps_App_Integration_Wizard.htm?Highlight=app%20integration) with the following options, then copy the Client ID and Client Secret(save for later).
 
-Response for provisioned user
-{
-   	 "id": "00u9hwxxxxxxxxxxxxxx",
-   	 "status": "PROVISIONED",
-   	 "created": "2019-01-29T19:24:35.000Z",
-    	"activated": "2019-01-29T19:24:35.000Z",
-   	 "statusChanged": "2019-01-29T19:24:35.000Z",
-   	 "lastLogin": null,
-    	"lastUpdated": "2019-01-29T19:24:35.000Z",
-   	 "passwordChanged": null,
-    	"profile": {
-      	  "firstName": "FIRST",
-        	"lastName": "LAST",
-        	"mobilePhone": null,
-       	 "migration_app": "true",
-       	 "secondEmail": null,
-        	"login": "FIRST.LAST@DOMAIN.com",
-       	 "isPasswordInOkta": false,
-       	 "email": "FIRST.LAST@DOMAIN.com"
-   	 },
-   	 "credentials": {
-       	 "provider": {
-           		 "type": "OKTA",
-            	"name": "OKTA"
-       	 }
-   		 }
+   1.Enable implicit flow
+   2. Set "Login Redirect URI's" to `http://localhost:10100/authcallback`
 
-The newly created users will be created in a PROVISIONED state with "isPassswordInOkta" set to false and via the group rule automatically be assigned the ODIC web application.
+      ![Okta Migration Demo App](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-migration-demo-app.png)
+
+5. Create a [Group](https://help.okta.com/en/prod/Content/Topics/Directory/Directory_Groups.htm?cshid=Directory_Groups#Directory_Groups) called "Migration App"
+
+   ![Okta Add Group](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-add-group.png)
+
+6. Assign the"Migration App" group to the app created in step 4
+
+   ![Okta Migration App Group Assignment](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-migration-app-group-assignment.png)
+7. Create a [group rule](https://help.okta.com/en/prod/Content/Topics/Directory/Directory_Groups.htm) that states "IF user.migration_app equals "true" THEN Assign to "Migration App"
+
+   ![Okta Migration App Edit Rule](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-migration-app-edit-rule.png)
+
+8. Using the Okta API, create your users in a [PROVISIONED state](https://developer.okta.com/docs/api/resources/users#create-user-without-credentials)
+
+   ![Okta Non-Migrated User](https://github.com/oktadeveloper/okta-user-migration-dotnet/raw/master/assets/okta-non-migrated-user.png)
+
+   To Create provisioned user:
+
+   ```
+   POST /api/v1/users?activate=true HTTP/1.1
+   Host: ORG.okta.com
+   Accept: application/json
+   Content-Type: application/json
+   Authorization: SSWS TOKEN
+   cache-control: no-cache
+   Postman-Token: 18c2532b-2357-4adb-9755-24676877
+   {
+     "profile": {
+       "firstName": "FIRST",
+       "lastName": "LAST",
+       "email": "FIRST.LAST@DOMAIN.com",
+       "login": "FIRST.LAST@DOMAIN.com",
+       "migration_app": "true"
+       "isPasswordInOkta":false
+     }
+   }
+   ```
+   Response for provisioned user
+
+   ```
+   {
+     "id": "00u9hwxxxxxxxxxxxxxx",
+     "status": "PROVISIONED",
+     "created": "2019-01-29T19:24:35.000Z",
+     "activated": "2019-01-29T19:24:35.000Z",
+     "statusChanged": "2019-01-29T19:24:35.000Z",
+     "lastLogin": null,
+     "lastUpdated": "2019-01-29T19:24:35.000Z",
+     "passwordChanged": null,
+     "profile": {
+       "firstName": "FIRST",
+       "lastName": "LAST",
+       "mobilePhone": null,
+       "migration_app": "true",
+       "secondEmail": null,
+       "login": "FIRST.LAST@DOMAIN.com",
+       "isPasswordInOkta": false,
+       "email": "FIRST.LAST@DOMAIN.com"
+     },
+     "credentials": {
+       "provider": {
+         "type": "OKTA",
+         "name": "OKTA"
+       }
+     }
+   }
+   ```
+
+6. The newly created users will be created in a PROVISIONED state with "isPassswordInOkta" set to false and via the group rule automatically be assigned the ODIC web application.
+
 ##2.Create a custom login page
 On a Windows server install the IIS server role as well as ASP..Net 4.6.1 and .Net 4.71. Additionally if you plan to edit the project you will need Visual Studio Community 2017, which is free.
 
@@ -124,17 +147,17 @@ Once IIS is installed, create a new website and application pool called "LDAP Mi
 With the web server built and web directory in place, browse to the web directory (c:\intetpub\wwwroot\LDAPmigration). Edit web.config and change the following variables:
 
 <add key="okta.ApiUrl" value="YOUR_OKTA_TENANT" />
- 	 <add key="okta.ApiToken" value="YOUR_OKTA_TENANT_API_TOKEN" />
-    	<!-- use web for sp_int workflow-->
-   	 <add key="oidc.spintweb.clientId" value="YOUR_OKTA_OIDCAPP_CLIENTID" />
+    <add key="okta.ApiToken" value="YOUR_OKTA_TENANT_API_TOKEN" />
+      <!-- use web for sp_int workflow-->
+      <add key="oidc.spintweb.clientId" value="YOUR_OKTA_OIDCAPP_CLIENTID" />
  <add key="oidc.spintweb.clientSecret" value="YOUR_OKTA_OIDCAPP_CLIENTSECRET" />
 <add key="oidc.spintweb.RedirectUri_Implicit" value="OIDC_APP_REDIRECT_URI" />
 <add key="oidc.spintweb.RedirectUri_AuthCode" value="OIDC_APP_REDIRECT_URI"/>
-    	<add key="oidc.issuer" value="YOUR_OKTA_TENANT_ISSUER" />
-    	<!-- ldap config-->
-    	<add key="ldap.server" value="YOUR_LDAP_SERVER" />
-    	<add key="ldap.port" value="YOUR_LDAP_SERVER_PORT" />
-    	<add key="ldap.baseDn" value=",YOUR_LDAP_SERVER_BASE_DN" />
+      <add key="oidc.issuer" value="YOUR_OKTA_TENANT_ISSUER" />
+      <!-- ldap config-->
+      <add key="ldap.server" value="YOUR_LDAP_SERVER" />
+      <add key="ldap.port" value="YOUR_LDAP_SERVER_PORT" />
+      <add key="ldap.baseDn" value=",YOUR_LDAP_SERVER_BASE_DN" />
 
 Once complete, save web.config and restart the IIS server.
 
