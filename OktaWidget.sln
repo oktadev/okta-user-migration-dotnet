@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OktaWidget", "OktaWidget\OktaWidget.csproj", "{D631C620-A7D0-4FF8-817C-814C8CA320CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D631C620-A7D0-4FF8-817C-814C8CA320CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D631C620-A7D0-4FF8-817C-814C8CA320CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D631C620-A7D0-4FF8-817C-814C8CA320CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D631C620-A7D0-4FF8-817C-814C8CA320CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0CF1D25-2B66-4EBC-B1ED-00E086019847}
+	EndGlobalSection
+EndGlobal
