@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noarchive">
+    <meta name="googlebot" content="noarchive">
+    <meta name="robots" content="noindex">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="googlebot" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>CustomLogin</title>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/custom")
+    @RenderSection("scripts", required: false)
+
+    <!--can be updated before production-->
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/saasure-min.css" type="text/css" rel="stylesheet">
+    <link href="~/Content/okta.css" type="text/css" rel="stylesheet">
+    <link href="~/Content/user.css" type="text/css" rel="stylesheet">
+    <link href="~/Content/login.css" type="text/css" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body id="app" class="enduser-app">
+    <noscript>&lt;div id="noscript-mask"&gt;&lt;/div&gt;&lt;div id="noscript-msg" class="infobox infobox-warning infobox-compact"&gt;&lt;span class="icon warning-16"&gt;&lt;/span&gt;&lt;h3&gt;Javascript is disabled on your browser.&lt;/h3&gt;&lt;p&gt;Please enable Javascript and refresh this page to use Okta.&lt;/p&gt;&lt;/div&gt;</noscript>
+
+
+    <div id="container">
+
+        <div id="subcontainer" class="rounded-6 sign-in ">
+            <div class="sign-in-header">
+                <div class="logo" align="center">
+                    <img src="~/Content/img/logo_widgico.png" alt="Okta PS">
+                </div>
+            </div>
+            @if (TempData["errMessage"] != null)
+            {
+                <div id="signin-feedback" class="infobox infobox-error infobox-compact icon-16 clear signin-feedback">
+                    <span class="glyphicon glyphicon-exclamation-sign form-alert"></span>
+                    @TempData["errMessage"]
+                </div>
+            }
+            @RenderBody()
+
+        </div><!--subcontainer -->
+        <div id="footer" class="sign-in-footer">
+            <a href="https://www.okta.com/" class="inline-block notranslate">Okta PS. All rights reserved</a>
+            <a href="https://www.okta.com/privacy-policy/" class="inline-block margin-l-10">Privacy Policy</a>
+        </div>
+
+    </div> <!-- container -->
+
+</body>
+
+</html>

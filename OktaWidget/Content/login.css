@@ -1,0 +1,85 @@
+.enduser-app{background-color:#f9f9f9}
+.enduser-app .sign-in{background-color:#fff;margin:100px auto 0;padding:30px;width:580px;border-radius:6px;border-width:1px;border-style:solid}
+.enduser-app .sign-in #nav-account span{color:#5e5e5e}.enduser-app .sign-in #nav-account a{color:#0074b3}
+.enduser-app .sign-in #nav-account a:hover{color:#5e5e5e;text-decoration:underline}
+.sign-in-without-sec-img{width:282px !important}#container{box-shadow:none !important;width:auto;border:none}
+.sign-in-content{padding:20px;background:#f9f9f9;border:1px solid #e6e6e6}
+.sign-in-content .factor-content .infobox-error{margin-bottom:20px}
+.reset-password .ajax-form-processed .infobox-no-border.icon-24{margin:0 0 10px}
+.sign-in.sign-in-common .sign-in-content.reset-password .module-bg{padding:10px 10px 5px}
+.sign-in-header{position:relative;margin-bottom:15px}.sign-in-header #nav-account{right:0}
+.sign-in-common h1{padding:0;margin:0 0 10px;font-size:18px;line-height:1.4}
+.sign-in-common .factor-content .button-bar-bottom{position:absolute;bottom:0;right:0;left:0;border-top:1px solid #e1e1e1}
+.sign-in-common .factor-content .infobox-error{border-radius:4px}
+.sign-in-common form{background:transparent;border:none;padding:0}
+.sign-in-common .v-form label{margin:0 0 10px;line-height:1.4}
+.sign-in-common input[type=text],.sign-in-common select{width:97%}
+.sign-in-common input.challenge[type=text],.sign-in-common input.challenge[type=password]{width:97%;padding:5px;font-size:13px}
+.sign-in-common .remember-device{margin:7px 0 0 10px !important;clear:none;padding:0}
+.sign-in-common .remember-device-extra-checkbox{margin:-5px 0 0 !important}
+.sign-in-common .remember-device-sms{margin:-20px 0 0 10px !important}
+.sign-in-common .soft-token-remember-device{margin:0 !important;padding:8px 0;line-height:14px}
+.sign-in-button-bar{margin:0 -21px -21px}.sign-in-common .sign-in-button-bar .button{margin:0 0 0 10px;min-width:110px}
+.sign-in-common .sign-in-button-bar .controls{float:right;margin:5px 0 0 0}
+.sign-in-common .sign-in-button-bar .help-link{float:left}
+.sign-in-common .factor-content-soft-token .m-form{border:none}
+.sign-in-common .factor-content .factor-content-soft-token .verify-error{margin:0 120px 20px 0}
+.sign-in-common .factor-content .factor-rsa .verify-error{margin:0 200px 20px 0}
+.sign-in-common .factor-content-soft-token .m-form label.soft-token-challenge{width:auto;padding:0;margin:0 0 3px;float:none !important;height:auto;font-weight:normal}
+.sign-in-common .factor-content-soft-token h1,.sign-in-common .factor-content-soft-token h1+p,.sign-in-common .factor-content-soft-token .mfa-challenge-form{padding:0 130px 0 0}
+.sign-in-common .factor-content-soft-token .m-form input[type='button']{position:static;margin-left:115px}
+.sign-in-common .smart-phone{height:200px;width:100px;position:absolute;right:4px;bottom:0}
+.sign-in-common .hard-token{height:100px;width:200px;position:absolute}
+.sign-in-common .rsa-securid{right:0;bottom:12px}
+#container #footer{clear:left;text-align:center;border-top:none;margin:10px auto;width:532px;color:#a1a1a1;font-size:12px;line-height:19px}
+#container #footer a{color:#a1a1a1}
+#container #footer.challenge-footer{width:532px}
+#container .sign-in-common #footer{padding:7px 0 0}
+#container #signin-box #credentials{background-color:transparent;border:none;padding:0}
+#container #signin-box .v-form label{font-size:14px;line-height:18px;margin:0 0 10px;font-weight:normal;padding:0}
+#container #signin-box .v-form label.inline-label{font-size:13px}
+#container #signin-box .v-form label.first{padding:0}
+#container #signin-box .v-form input{height:18px;padding:3px 4px;margin:2px 0 0;width:232px;max-height:none;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+#container #signin-box .v-form label input{font-size:1em}
+#container #signin-box .v-form input.button{width:120px;height:30px;margin:3px 0 0;float:left;padding:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+#container #signin-box .v-form fieldset{margin-bottom:10px;padding:0 0 10px}
+#container .two_col_left,#container .two_col_right{margin:0}
+#container .two_col_left{float:left;width:242px;padding-right:0}
+#container .two_col_right{float:right;padding:35px 0 10px;width:auto}
+#container .two_col_right p.sec-label{height:20px;line-height:20px;text-align:center;font-weight:normal;font-size:11px}
+#container #signin-box legend{font-size:21px;font-weight:200;line-height:20px;padding:0 0 15px;display:inline}
+#secimg{height:126px;width:186px;padding:0;background:#fff url(/assets/img/security/unknown.32c549060b1ade345c06717ffc4067fb.png) no-repeat 3px 3px;border:1px solid #ddd}
+#signin-feedback p{color:#5e5e5e}
+#signin-feedback.infobox{background-color:#fff}
+#help-links{clear:left;padding:0;margin-top:15px}
+#help-links a:hover{text-decoration:underline}
+#dialog{background:#f8f8f8}
+#dialog form.v-form{background:transparent;padding:20px}
+#dialog .v-form fieldset{margin:0;padding:0}
+#dialog .v-form label{margin:0;font-size:14px;font-weight:normal}
+#dialog .v-form input{margin-top:5px;width:390px}
+#dialog .v-form label input{font-size:13px}kbd
+#url-example{padding-left:10px}.help-modal .infobox{padding:20px}.help-modal h3,.help-modal h3 *{color:#5e5e5e;font-weight:normal;font-size:14px}
+.help-modal h3{margin:0 0 5px}
+.help-modal h4{margin:10px 0 5px;font-weight:normal;font-size:13px;color:#515151}
+.help-modal p,.help-modal p *,.help-modal li,.help-modal li *{color:#616161}.help-modal p+h3{margin:20px 0 5px}.help-modal p+h4{margin:15px 0 5px}.remember-label{display:block;float:right;margin:10px 0 0 0 !important;font-size:12px !important;font-weight:normal !important}
+.remember-label #remember{display:inline !important;height:auto !important;width:auto !important}
+label{opacity:1}label.focus{opacity:0.35}
+label.has-text{opacity:0.0 !important;-moz-transition-duration:0s;-webkit-transition-duration:0s}
+label.inline-label{z-index:100 !important}
+input#user-signin{z-index:1000 !important}
+label.inline-label+input#user-signin{margin-top:-22px}
+#app .sign-in-content .v-form label.inline-label{color:#b1b1b1 !important}
+.sign-in .sign-in-content a.icon.icon-13{margin:0;left:2px}
+.deeplink-sign-in{margin-top:35px !important}
+#deep-link-header .inner-container{padding:0;background:transparent;border:none}
+#deep-link-header .container{background:#fff;margin:20px auto 0;position:relative;padding:20px 30px;border-radius:6px;width:492px;border-width:1px;border-style:solid}
+#deep-link-header .app-logo-bg{border:1px solid #ddd}
+#deep-link-header .wide-modal{width:580px}
+#deep-link-header .wide-modal #deep-link-text{width:auto}
+#send-email .no-email-link{display:block;margin-top:15px !important}
+.enduser-app .sign-in-footer .goog-te-menu-value>span{color:#a1a1a1 !important}@media only screen and (max-width: 700px), only screen and (max-device-width: 700px){.soft-token-challenge input[type='text']{margin-top:8px}
+                                                                                                                                                                    #deep-link-header .container{padding:10px;width:auto !important;margin-top:10px;border-radius:0 !important;border-left:none !important;border-right:none !important}
+                                                                                                                                                                    .factor-content .padding-20-0.margin-top-15{margin-top:0 !important}.sign-in-common .smart-phone,.sign-in-common .hard-token{display:none}.sign-in,#subcontainer{background-color:#fff;margin:50px auto 0}}@media only screen and (max-width: 568px), only screen and (max-device-width: 568px){body{min-height:400px}html,body,#subcontainer,.sign-in,.sigin-in-content,#deep-link-header .container,.two_col_left,#help-links{width:auto !important;-webkit-text-size-adjust:none;-moz-text-size-adjust:none;-text-size-adjust:none}#container .two_col_right,#remember-help,#no-email-msg .info-24,#deep-link-header .app-logo-wrap{display:none !important}#container,#container .sign-in{border-radius:0 0 0 0 !important;border-width:0 0 1px;box-shadow:none}.sign-in,#subcontainer{background-color:#fff;margin:0 auto;padding:16px}.sign-in{border-radius:0}#container .two_col_left{width:100% !important}#container #signin-box .v-form fieldset{margin-bottom:15px;padding-bottom:0}#container #signin-box .v-form input{width:95.9%;height:22px;font-size:13px}#footer,#container .sign-in-footer,#container #footer.challenge-footer{width:auto !important;padding:0 15px}.sign-in .logo>img{max-height:30px;width:auto !important}#container #signin-box legend{font-size:18px;padding:0 0 12px}#simplemodal-container{width:90% !important;margin:0 auto 15px !important;top:15px !important;right:10px !important;left:10px !important}#dialog .v-form input{width:96% !important}#simplemodal-overlay{left:0;top:0;bottom:0;right:0;height:2000px !important;position:absolute}.sign-in.sign-in-common .sign-in-content.reset-password label{height:50px;margin-top:10px;padding:0}.sign-in.sign-in-common .sign-in-content.reset-password input[type='password']{width:96%;left:0;top:5px}#get-help-modal .v-form textarea{width:100%}.sign-in-content #reset-password-challenge .sign-in-button-bar.button-bar,.sign-in-content.reset-password .sign-in-button-bar.button-bar{padding:8px 10px !important}.sign-in.sign-in-common .sign-in-content.reset-password label:last-child{margin-bottom:10px}.mfa-challenge-form{min-height:0}.sign-in-common .smart-phone,.sign-in-common .hard-token{display:none}.sign-in-common .factor-content-soft-token h1,.sign-in-common .factor-content-soft-token h1+p,.sign-in-common .factor-content-soft-token .mfa-challenge-form{padding:0}.sign-in-common .factor-content-soft-token .m-form{margin:0}.sign-in-common .factor-content .factor-content-soft-token .verify-error{margin:-10px -10px 15px -10px}#deep-link-text{margin-top:0}#deep-link-text .deep-link-app{display:inline}}@media only screen and (max-width: 480px), only screen and (max-device-width: 480px){.sign-in-common .sign-in-button-bar .controls{float:none;margin:15px 0 -8px}.sign-in-common .soft-token-remember-device{margin:5px 0 0 !important}}
+/*.login-clayton {font-family: "Ariel" , serif;}*/
+

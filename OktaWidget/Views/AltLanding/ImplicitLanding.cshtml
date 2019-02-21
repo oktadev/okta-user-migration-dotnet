@@ -1,0 +1,230 @@
+﻿@model System.IdentityModel.Tokens.Jwt.JwtSecurityToken
+
+@{
+    ViewBag.Title = "ImplicitLanding";
+}
+
+<style>
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
+
+
+
+<br />
+<div style="display:inline; margin:10px; padding:10px;">
+    <span id="session"></span>
+    <span id="my_session_id"></span>
+</div>
+<br />
+<br />
+
+
+@*<div style="display:block; margin:10px; padding:10px;">*@
+<div id="signin-box" class="rounded-6 sign-in-content">
+    <h2>Implicit Workflow Landing (Protected)</h2>
+
+    <fieldset style="display:block;">
+        <form action="~/AltLanding/ImplicitLanding" method="get" id="getuserinfo" onsubmit="return displaySessions()" class="v-form" autocomplete="off" style="border:none;">
+            @*@Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()*@
+            <input id="idToken" name="idToken" type="hidden" value="@TempData["idToken"]" placeholder="" />
+            <input id="oktaId" name="oktaId" type="hidden" placeholder="" />
+            <input id="session_id" name="session_id" type="hidden" placeholder="" />
+
+            @*<br />
+                <br />
+                <input value="Token Introspection" name="introspection2_but" type="submit" id="introspection2_but" class="button allow-in-read-only allow-in-safe-mode" tabindex="4"><br />
+                <label id="introspection" for="introspection2_but">after successful OIDC login, check if  id_token is active</label>
+                <br />
+                <input value="Token Revoke" name="revoke_but" type="submit" id="revoke_but" class="button allow-in-read-only allow-in-safe-mode" tabindex="4">
+                <label id="revoke" for="revoke_but">after successful OIDC login, revoke token</label>
+                <br />*@
+            <br />
+
+        </form>
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Display ID Token Data</button>
+
+    </fieldset>
+
+</div>
+<div>
+    <button id="sessionme_but" onclick="displaySessions()" class="button allow-in-read-only allow-in-safe-mode float-n"> Display Sessions</button>
+    <label id="sessionme" for="sessionme_but">Display Session Cookie from client-side</label>
+    <br />
+    <button id="logout_but" onclick="logoutSessions()" class="button allow-in-read-only allow-in-safe-mode float-n"> Logout User</button>
+    <label id="logout" for="logout_but">Logout User from client-side</label>
+
+</div>
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">×</span>
+
+        <h4>ID Token Response</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            @foreach (var x in Model.Payload)
+            {
+                <dt>
+                    @x
+                </dt>
+            }
+
+        </dl>
+    </div>
+</div>
+
+<script>
+
+
+        var myOktaOrg = "@TempData["oktaOrg"]";
+
+        var mySessionId = "no session data";
+
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+
+(function () {
+    var url = window.location.href;
+    var arr = url.split("/");
+    var result = arr[0] + "//" + arr[2];
+    document.getElementById("demo").innerHTML = result;
+
+})();
+
+    function processData() {
+        displaySessions();
+
+    }
+
+    function logoutSessions() {
+        baseUrl = myOktaOrg;
+
+        // Detect if user has session...
+        $.ajax({
+            url: baseUrl + '/api/v1/sessions/me',
+            crossDomain: true,
+            type: 'DELETE',
+            xhrFields: { withCredentials: true },
+            accept: 'application/json',
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            },
+            success: function (data) {
+                console.log(data);
+                window.location.href="http://localhost:10100/"
+      
+            }
+        });
+
+    }
+
+    function displaySessions() {
+        // Variables
+
+        baseUrl = myOktaOrg;
+
+        document.getElementById("session").innerHTML = "Current Sessions Id: ";
+        //  debugger;
+        // Detect if user has session...
+        $.ajax({
+            url: baseUrl + '/api/v1/sessions/me',
+            type: 'GET',
+            xhrFields: { withCredentials: true },
+            accept: 'application/json'
+        })
+        .done(function (meData) {
+            console.log('me: ', meData);
+            console.log('session_id', meData.id);
+            document.getElementById("my_session_id").innerHTML = meData.id;
+            document.getElementById("session_id").value = meData.id;
+            document.getElementById("oktaId").value = meData.userId;
+            mySessionId = meData.id;
+            console.log("SessionId:", meData.id);
+
+
+        })
+        .fail(function (meData, textStatus, error) {
+            console.log('meData: ', meData);
+            console.log('meData.status: ', meData.status);
+            console.log('statusText: ', meData.statusText);
+            console.log('error: ', error);
+
+            document.getElementById("my_session_id").innerHTML = "No Session ID present";
+
+        });
+    }
+
+</script>
+

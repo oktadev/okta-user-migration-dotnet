@@ -1,0 +1,421 @@
+/*
+ * Enduser styles
+ */
+
+#password-criteria ul {
+    margin: 5px 0 0 40px;
+}
+#password-criteria .bullets li + li {
+    margin-top: 0;
+}
+#change_password label.show-meter {
+    margin: -8px 0 36px;
+    width: 91%;
+}
+#change_password label.new-password .pass-meter {
+    display: block;
+    position: relative;
+    top: -13px;
+    right: 0;
+    left: -3px;
+    font-weight: normal;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    margin: 0;
+    width: 90%;
+}
+#change_password label.valid-msg {
+    height: 35px;
+}
+#change_password label.invalid-msg {
+    height: 60px;
+}
+#welcome-user p {
+    font-size: 14px;
+    line-height: 18px;
+}
+#welcome-user p + p {
+    margin-top: 8px;
+}
+.reset-password .v-form {
+    width: 600px;
+    margin: 0 auto;
+}
+#user-profile .extensible_prop {
+    height: auto;
+    word-wrap: break-word;
+}
+#user-profile .page-links {
+    top: 20px;
+    width: 90px;
+    right: 40px;
+}
+#admin-user-profile .extensible_prop {
+    height: auto;
+    word-wrap: break-word;
+}
+.unverified-email {
+	font-weight: bold;
+}
+.verify-email-change {
+	font-size: 12px;
+	display: block;
+	width: 440px;
+	margin-left: -63%;
+	margin-top: -8px;
+	line-height: 1.35em;
+}
+#person_security_image {
+	display: block;
+	margin: 0 auto;
+}
+.read-only #person_security_image_view {
+	opacity: 0.4;
+	-moz-opacity:.40;
+	filter:alpha(opacity=40);
+}
+a.person_security_image_anchor {
+	display: block;
+	float: left;
+	height: 61px;
+	padding: 3px;
+  margin:  10px 10px 0 0;
+  border:  1px solid #d0d0d0;
+	background-color: #fff;
+}
+a.person_security_image_anchor:hover {
+    border-color: #666666;
+    box-shadow: 0 0 3px rgba(175, 175, 175, 0.6);
+}
+.person_security_image_anchor img {
+	padding: 0;
+}
+#person_security_image_view img {
+	border: 1px solid #d0d0d0;
+	padding: 3px;
+}
+#person_security_image_edit h4 {
+    padding: 10px 0 0;
+    margin: 0 20px;
+}
+#person_security_image_edit fieldset.change-password {
+	padding: 15px 0 15px 20px;
+	float: left;
+}
+
+#person_security_image_edit fieldset.signup-gallery {
+    width: 500px;
+}
+
+.security-image {
+    padding: 20px 0 10px;
+}
+
+.security-image-bg {
+    background: #f9f9f9;
+}
+
+.security-image-edit {
+    border-radius: 0 0 4px 4px;
+    border-top: 1px solid #ddd;
+}
+
+.security-image-edit h3 {
+    font-weight: normal;
+    margin-bottom: 0;
+    text-align: center;
+    color: #777;
+    padding: 10px 0;
+}
+
+.security-image-thumbs {
+    padding: 0 0 8px 38px;
+}
+
+.security-image-thumbs > a.person_security_image_anchor {
+    margin: 0 20px 12px 0;
+}
+
+a.person_security_image_selected {
+    background-color: #333333;
+    border: 1px solid #333333;
+    position: relative;
+}
+
+.person_security_image_selected_checked {
+    background: #000000 url("/assets/img/icons/enduser/check.76b59e05417afc7f970e68b2b1bbcad5.png") no-repeat 4px 4px;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+}
+
+.app-details .app-password-feedback {
+	display: block;
+	font-size: 11px;
+}
+#app-info-dialog #app-info-form .m-form label {
+	width: 110px;
+	padding: 0 0 0 50px;
+}
+#app-info-dialog #app-info-form .m-form input, #app-info-dialog #app-info-form .m-form span.read-only-input {
+	left: 110px;
+	width: 250px;
+}
+#app-info-dialog #app-info-form .m-form span.read-only-input {
+    width: 285px;
+}
+span.notice {
+	padding: 0 0 0 20px;
+	background: url("/assets/img/icons/16x16/information-01.7c9e975f24d7bfd7794faa63dd08067f.png") no-repeat 0 -1px transparent;
+	font-weight: normal;
+	color: #4e4e4e;
+	line-height: 16px;
+}
+
+/* Edit credentials modal */
+
+.change-password-modal .infobox,
+.change-password-modal .m-form {
+  padding: 30px;
+}
+
+#edit-credentials-dialog .m-form label {
+  padding: 7px 71% 7px 0;
+}
+
+#edit-credentials-dialog .m-form label input,
+#edit-credentials-dialog .m-form span.read-only-input {
+  left: 30%;
+  width: 70%;
+}
+.app-credentials-logo {
+  width: 30%;
+  float: left;
+  margin: 10px 0 5px;
+}
+.app-credentials-infobox {
+  width: 70%;
+  float: left;
+}
+#edit-credentials-dialog .m-form .m-form-explain-text {
+    margin-left: 30%;
+}
+.missing-reqs, .missing-reqs li.app-name {
+	background-color: #fffbea !important;
+}
+.app-link-wrap.change-pwd-req {
+    background-color:#f4e3e3;
+ }
+.app-missing-reqs {
+    color: #999;
+    font-size: 11px !important;
+    margin: 3px 0 0;
+    line-height: 16px;
+    position: relative;
+    padding-left: 20px;
+}
+.app-missing-reqs:hover {
+    cursor: default;
+    text-decoration: none !important;
+}
+.edit .app-missing-reqs {
+    display: none;
+}
+.app-missing-reqs .icon {
+    left: 0;
+    top: 0;
+}
+
+.arrow-gray {
+    background: url("/assets/img/getting-started/arrow-gray.c0f674f80e75757fdac2b73dda052226.png") no-repeat 0 0 transparent;
+    height: 16px;
+    width: 20px;
+    position: absolute;
+    right: -30px;
+    top: 7px;
+}
+#add-app-intro.tooltip-onetime-video {
+    top: -23px;
+    right: 172px;
+}
+/* Mobile app overrides */
+.tablet #container {
+    width: auto;
+}
+
+#plugin-phone-uninstallable{
+    display: none;
+}
+
+#plugin-phone-uninstallable .uninstallable-app-name{
+    line-height:20px;
+    color: #444;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+#plugin-phone-uninstallable .uninstallable-app-instance-name{
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #777;
+    margin-bottom: 0;
+}
+
+#plugin-phone-uninstallable .unusablelogo{
+    border: 1px solid #E4E4E4;
+    display: inline-block;
+    height: 60px;
+    width: 104px;
+    margin: 0 7px 0 0;
+    float:left;
+}
+
+#plugin-phone-uninstallable .unusablelogo img{
+    margin: 16px auto 0;
+    display: block;
+    position: relative;
+    height: 22px;
+
+
+}
+
+#plugin-phone-uninstallable .unusableappdiv{
+    float: left;
+    margin-top: 7px;
+    font-size: 14px;
+}
+
+/* Welcome page styles */
+
+.welcome-page-no-email{
+    clear: both;
+    display: block;
+    float: left;
+    margin: -8px 0 0;
+    padding: 0 0 0 20px;
+    width: 162px;
+    font-size: 12px;
+    height: 37px;
+    line-height: 14px;
+}
+
+/* Google translate overrides */
+
+#google_translate_element {
+    margin-top: 7px;
+}
+
+#google_translate_element .goog-te-gadget-simple {
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.goog-te-menu2-item .text {
+    color: red !important;
+}
+
+.sign-in-footer #google_translate_element {
+    margin-top: 0;
+    margin-left: 10px;
+}
+/* onboarding overlay */
+.onboarding-mask {
+    opacity: .9;
+    filter: alpha(Opacity=90);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background-color: #000;
+    display: none;
+}
+
+.onboarding-content {
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1001;
+    display: none;
+}
+
+.onboarding-content-wrapper {
+    width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.onboarding-content .accountReady {
+    color: #baff4b;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.onboarding-content-wrapper > div,
+.onboarding-content h1 {
+    margin: 0;
+    padding: 0 0 43px 0;
+    position: relative; /*SG*/
+}
+
+.onboarding-content .appNumber {
+    color: #9cc8ff;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 0 7px 0;
+}
+
+.onboarding-content .header-small-icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    position: relative;
+    left: 0;
+    top: 2px;
+    margin-right: 7px;
+}
+
+.onboarding-icon-person-16 {
+    background: url("/assets/img/icons/experiments/wizard-16-002.ce47dec6bdeaee8e496c30780c08f7ab.png") no-repeat 0 -32px transparent;
+}
+
+.onboarding-icon-building-16 {
+    background: url("/assets/img/icons/experiments/wizard-16-002.ce47dec6bdeaee8e496c30780c08f7ab.png") no-repeat 0 -48px transparent;
+}
+
+.onboarding-icon-contact-16 {
+    background: url("/assets/img/icons/experiments/wizard-16-002.ce47dec6bdeaee8e496c30780c08f7ab.png") no-repeat 0 -64px transparent;
+}
+
+.onboarding-content .appNames {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#clear-onboarding-splash {
+    display: inline-block;
+    float: none;
+    border-color: #000 !important;
+    font-size: 15px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 38px;
+    padding: 0 25px;
+}
+
+.two_col_right .v-form-wide .security-question-dropdown {
+    width: 100%;
+}

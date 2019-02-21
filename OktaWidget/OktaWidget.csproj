@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D631C620-A7D0-4FF8-817C-814C8CA320CE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OktaJS_SDK</RootNamespace>
+    <AssemblyName>OktaJS_SDK</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.2.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.2\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.5.2.2\lib\net451\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.5.2.2\lib\net451\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Okta.Core, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Okta.Core.Client.0.3.3\lib\Okta.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.3.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.3.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AltLandingController.cs" />
+    <Compile Include="Controllers\FeatureController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OidcController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientRequests.cs" />
+    <Compile Include="Models\ClientResponses.cs" />
+    <Compile Include="Models\CustomUser.cs" />
+    <Compile Include="Models\GetInfoResponses.cs" />
+    <Compile Include="Models\OidcResponses.cs" />
+    <Compile Include="Models\PswMigrationModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AsyncHelper.cs" />
+    <Compile Include="Services\ICredAuthentication.cs" />
+    <Compile Include="Services\LdapAuthentication.cs" />
+    <Compile Include="Services\OktaOidcHelper.cs" />
+    <Compile Include="Services\OktaUserMgmt.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\assets\font\montserrat-light-webfont.svg" />
+    <Content Include="Content\assets\font\montserrat-regular-webfont.svg" />
+    <Content Include="Content\assets\font\okticon.svg" />
+    <Content Include="Content\assets\img\icons\16x16\error-01.png" />
+    <Content Include="Content\assets\img\icons\login\facebook_logo.png" />
+    <Content Include="Content\assets\img\icons\login\google_logo.png" />
+    <Content Include="Content\assets\img\icons\login\linkedin_logo.png" />
+    <Content Include="Content\assets\img\icons\login\tooltip_close.png" />
+    <Content Include="Content\assets\img\icons\mfa\androidActive_60x60.png" />
+    <Content Include="Content\assets\img\icons\mfa\android_60x60.png" />
+    <Content Include="Content\assets\img\icons\mfa\blackberryActive_60x60.png" />
+    <Content Include="Content\assets\img\icons\mfa\blackberry_60x60.png" />
+    <Content Include="Content\assets\img\icons\mfa\duo%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\duo_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\duo_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\duo_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\googleAuth%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\googleAuth_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\googleAuth_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\googleAuth_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\iOSActive_60x60.png" />
+    <Content Include="Content\assets\img\icons\mfa\iOS_60x60.png" />
+    <Content Include="Content\assets\img\icons\mfa\oktaVerify%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\oktaVerify_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\oktaVerify_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\oktaVerify_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\onprem%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\onprem_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\onprem_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\onprem_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\question%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\question_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\question_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\question_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\rsa%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\rsa_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\rsa_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\rsa_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\sms%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\sms_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\sms_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\sms_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\symantec%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\symantec_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\symantec_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\symantec_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\voicecall%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\voicecall_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\voicecall_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\voicecall_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\windowsActive_60x60.png" />
+    <Content Include="Content\assets\img\icons\mfa\windows_60x60.png" />
+    <Content Include="Content\assets\img\icons\mfa\yubico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\yubico_38x38.png" />
+    <Content Include="Content\assets\img\icons\mfa\yubico_70x70.png" />
+    <Content Include="Content\assets\img\icons\mfa\yubico_ico%402x.png" />
+    <Content Include="Content\assets\img\icons\mfa\yubikeyDemo.png" />
+    <Content Include="Content\assets\img\logo_widgico.png" />
+    <Content Include="Content\assets\img\security\default%402x.png" />
+    <Content Include="Content\assets\img\security\default.png" />
+    <Content Include="Content\assets\img\security\unknown-device%402x.png" />
+    <Content Include="Content\assets\img\security\unknown-device.png" />
+    <Content Include="Content\assets\img\ui\button\okta-buttons-sprite-001.png" />
+    <Content Include="Content\assets\img\ui\forms\checkbox-01%402x.png" />
+    <Content Include="Content\assets\img\ui\forms\checkbox-01.png" />
+    <Content Include="Content\assets\img\ui\forms\chosen-sprite%402x.png" />
+    <Content Include="Content\assets\img\ui\forms\chosen-sprite.png" />
+    <Content Include="Content\assets\img\ui\forms\radiobutton-01%402x.png" />
+    <Content Include="Content\assets\img\ui\forms\radiobutton-01.png" />
+    <Content Include="Content\assets\img\ui\indicators\ajax-loader-processing-16.gif" />
+    <Content Include="Content\assets\img\ui\indicators\ajax-loader-processing-24.gif" />
+    <Content Include="Content\assets\img\ui\indicators\checkmark.png" />
+    <Content Include="Content\assets\img\ui\indicators\drop-menu-s-white.png" />
+    <Content Include="Content\assets\img\ui\indicators\drop-menu-s.png" />
+    <Content Include="Content\assets\img\ui\indicators\scanerror.png" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\Assurant_logo.jpg" />
+    <Content Include="Content\img\logo_widgico.png" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\okta-sign-in.css" />
+    <Content Include="Content\okta-theme.css" />
+    <Content Include="Content\okta.css" />
+    <Content Include="Content\saasure-min.css" />
+    <Content Include="Content\user.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="img\icons\16x16\error-01.png" />
+    <Content Include="img\icons\login\facebook_logo.png" />
+    <Content Include="img\icons\login\google_logo.png" />
+    <Content Include="img\icons\login\linkedin_logo.png" />
+    <Content Include="img\icons\login\tooltip_close.png" />
+    <Content Include="img\icons\mfa\androidActive_60x60.png" />
+    <Content Include="img\icons\mfa\android_60x60.png" />
+    <Content Include="img\icons\mfa\blackberryActive_60x60.png" />
+    <Content Include="img\icons\mfa\blackberry_60x60.png" />
+    <Content Include="img\icons\mfa\duo%402x.png" />
+    <Content Include="img\icons\mfa\duo_38x38.png" />
+    <Content Include="img\icons\mfa\duo_70x70.png" />
+    <Content Include="img\icons\mfa\duo_ico%402x.png" />
+    <Content Include="img\icons\mfa\googleAuth%402x.png" />
+    <Content Include="img\icons\mfa\googleAuth_38x38.png" />
+    <Content Include="img\icons\mfa\googleAuth_70x70.png" />
+    <Content Include="img\icons\mfa\googleAuth_ico%402x.png" />
+    <Content Include="img\icons\mfa\iOSActive_60x60.png" />
+    <Content Include="img\icons\mfa\iOS_60x60.png" />
+    <Content Include="img\icons\mfa\oktaVerify%402x.png" />
+    <Content Include="img\icons\mfa\oktaVerify_38x38.png" />
+    <Content Include="img\icons\mfa\oktaVerify_70x70.png" />
+    <Content Include="img\icons\mfa\oktaVerify_ico%402x.png" />
+    <Content Include="img\icons\mfa\onprem%402x.png" />
+    <Content Include="img\icons\mfa\onprem_38x38.png" />
+    <Content Include="img\icons\mfa\onprem_70x70.png" />
+    <Content Include="img\icons\mfa\onprem_ico%402x.png" />
+    <Content Include="img\icons\mfa\question%402x.png" />
+    <Content Include="img\icons\mfa\question_38x38.png" />
+    <Content Include="img\icons\mfa\question_70x70.png" />
+    <Content Include="img\icons\mfa\question_ico%402x.png" />
+    <Content Include="img\icons\mfa\rsa%402x.png" />
+    <Content Include="img\icons\mfa\rsa_38x38.png" />
+    <Content Include="img\icons\mfa\rsa_70x70.png" />
+    <Content Include="img\icons\mfa\rsa_ico%402x.png" />
+    <Content Include="img\icons\mfa\sms%402x.png" />
+    <Content Include="img\icons\mfa\sms_38x38.png" />
+    <Content Include="img\icons\mfa\sms_70x70.png" />
+    <Content Include="img\icons\mfa\sms_ico%402x.png" />
+    <Content Include="img\icons\mfa\symantec%402x.png" />
+    <Content Include="img\icons\mfa\symantec_38x38.png" />
+    <Content Include="img\icons\mfa\symantec_70x70.png" />
+    <Content Include="img\icons\mfa\symantec_ico%402x.png" />
+    <Content Include="img\icons\mfa\voicecall%402x.png" />
+    <Content Include="img\icons\mfa\voicecall_38x38.png" />
+    <Content Include="img\icons\mfa\voicecall_70x70.png" />
+    <Content Include="img\icons\mfa\voicecall_ico%402x.png" />
+    <Content Include="img\icons\mfa\windowsActive_60x60.png" />
+    <Content Include="img\icons\mfa\windows_60x60.png" />
+    <Content Include="img\icons\mfa\yubico%402x.png" />
+    <Content Include="img\icons\mfa\yubico_38x38.png" />
+    <Content Include="img\icons\mfa\yubico_70x70.png" />
+    <Content Include="img\icons\mfa\yubico_ico%402x.png" />
+    <Content Include="img\icons\mfa\yubikeyDemo.png" />
+    <Content Include="img\logo_widgico.png" />
+    <Content Include="img\security\default%402x.png" />
+    <Content Include="img\security\default.png" />
+    <Content Include="img\security\unknown-device%402x.png" />
+    <Content Include="img\security\unknown-device.png" />
+    <Content Include="img\ui\button\okta-buttons-sprite-001.png" />
+    <Content Include="img\ui\forms\checkbox-01%402x.png" />
+    <Content Include="img\ui\forms\checkbox-01.png" />
+    <Content Include="img\ui\forms\chosen-sprite%402x.png" />
+    <Content Include="img\ui\forms\chosen-sprite.png" />
+    <Content Include="img\ui\forms\radiobutton-01%402x.png" />
+    <Content Include="img\ui\forms\radiobutton-01.png" />
+    <Content Include="img\ui\indicators\ajax-loader-processing-16.gif" />
+    <Content Include="img\ui\indicators\ajax-loader-processing-24.gif" />
+    <Content Include="img\ui\indicators\checkmark.png" />
+    <Content Include="img\ui\indicators\drop-menu-s-white.png" />
+    <Content Include="img\ui\indicators\drop-menu-s.png" />
+    <Content Include="img\ui\indicators\scanerror.png" />
+    <Content Include="Content\assets\font\montserrat-light-webfont.eot" />
+    <Content Include="Content\assets\font\montserrat-light-webfont.otf" />
+    <Content Include="Content\assets\font\montserrat-light-webfont.ttf" />
+    <Content Include="Content\assets\font\montserrat-light-webfont.woff" />
+    <Content Include="Content\assets\font\montserrat-regular-webfont.eot" />
+    <Content Include="Content\assets\font\montserrat-regular-webfont.otf" />
+    <Content Include="Content\assets\font\montserrat-regular-webfont.ttf" />
+    <Content Include="Content\assets\font\montserrat-regular-webfont.woff" />
+    <Content Include="Content\assets\font\okticon.eot" />
+    <Content Include="Content\assets\font\okticon.ttf" />
+    <Content Include="Content\assets\font\okticon.woff" />
+    <Content Include="Content\assets\sass\common\admin\icons\_all.scss" />
+    <Content Include="Content\assets\sass\common\admin\icons\_classes-social.scss" />
+    <Content Include="Content\assets\sass\common\admin\icons\_classes.scss" />
+    <Content Include="Content\assets\sass\common\admin\icons\_functions.scss" />
+    <Content Include="Content\assets\sass\common\admin\icons\_variables-theme.scss" />
+    <Content Include="Content\assets\sass\common\admin\icons\_variables-unicode-social.scss" />
+    <Content Include="Content\assets\sass\common\admin\icons\_variables-unicode.scss" />
+    <Content Include="Content\assets\sass\common\admin\modules\infobox\_infobox.scss" />
+    <Content Include="Content\assets\sass\common\enduser\_helpers.scss" />
+    <Content Include="Content\assets\sass\common\enduser\_reset.scss" />
+    <Content Include="Content\assets\sass\common\enduser\_responsive-variables.scss" />
+    <Content Include="Content\assets\sass\common\foo.scss" />
+    <Content Include="Content\assets\sass\common\shared\helpers\_all.scss" />
+    <Content Include="Content\assets\sass\common\shared\helpers\_mixins.scss" />
+    <Content Include="Content\assets\sass\common\shared\helpers\_variables.scss" />
+    <Content Include="Content\assets\sass\common\shared\o-forms\_o-form-variable.scss" />
+    <Content Include="Content\assets\sass\common\shared\o-forms\_o-form.scss" />
+    <Content Include="Content\assets\sass\modules\_app-login-banner.scss" />
+    <Content Include="Content\assets\sass\modules\_beacon.scss" />
+    <Content Include="Content\assets\sass\modules\_btns.scss" />
+    <Content Include="Content\assets\sass\modules\_enroll.scss" />
+    <Content Include="Content\assets\sass\modules\_factors-dropdown.scss" />
+    <Content Include="Content\assets\sass\modules\_footer.scss" />
+    <Content Include="Content\assets\sass\modules\_forgot-password.scss" />
+    <Content Include="Content\assets\sass\modules\_forms.scss" />
+    <Content Include="Content\assets\sass\modules\_header.scss" />
+    <Content Include="Content\assets\sass\modules\_infobox.scss" />
+    <Content Include="Content\assets\sass\modules\_mfa-challenge-forms.scss" />
+    <Content Include="Content\assets\sass\modules\_okta-footer.scss" />
+    <Content Include="Content\assets\sass\modules\_qtip.scss" />
+    <Content Include="Content\assets\sass\modules\_social.scss" />
+    <Content Include="Content\assets\sass\okta-sign-in.scss" />
+    <Content Include="Content\assets\sass\okta-theme.scss" />
+    <Content Include="Content\assets\sass\widgets\_chosen.scss" />
+    <Content Include="Content\assets\sass\widgets\_jquery.qtip.scss" />
+    <Content Include="Content\assets\sass\widgets\_mega-drop-down.scss" />
+    <Content Include="Content\assets\sass\_base.scss" />
+    <Content Include="Content\assets\sass\_fonts.scss" />
+    <Content Include="Content\assets\sass\_helpers.scss" />
+    <Content Include="Content\assets\sass\_ie.scss" />
+    <Content Include="Content\assets\sass\_layout.scss" />
+    <Content Include="Content\assets\sass\_variables.scss" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\okta-auth-sdk.js" />
+    <Content Include="Scripts\okta-sign-in.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\modernizr.custom.48287.js" />
+    <Content Include="Views\AltLanding\UnprotectedLanding.cshtml" />
+    <Content Include="Views\AltLanding\ImplicitLanding.cshtml" />
+    <Content Include="Views\Home\LoginHelp.cshtml" />
+    <Content Include="Views\Home\oidcPswMigrationLogin.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Feature\" />
+    <Folder Include="Views\Oidc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60544</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/pswMigration</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:50664</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

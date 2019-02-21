@@ -1,0 +1,165 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Okta Sign-in Widget</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- Latest CDN production Javascript and CSS: 1.11.0 -->
+    <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/js/okta-sign-in.min.js" type="text/javascript"></script>
+    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/css/okta-sign-in.min.css" type="text/css" rel="stylesheet">
+    <!-- Theme file: Customize or replace this file if you want to override our default styles -->
+    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/css/okta-theme.css" type="text/css" rel="stylesheet">
+
+    <style type="text/css"></style>
+</head>
+<body>
+
+    <div id="okta-login-container"></div>
+
+    <form action="~/AltLanding/ImplicitLanding" method="post" id="oidcImplicit"  class="v-form" autocomplete="off" style="border:none;">
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <input id="idToken" name="idToken" type="hidden" value="" placeholder="" />
+        <input id="relayState" name="relayState" type="hidden" value="" placeholder="" />
+    </form>
+
+
+
+    <script type="text/javascript">
+
+    var clientId = "@TempData["clientId"]";
+    var redirectUri = "@TempData["redirectUri"]";
+    var myOktaOrg = "@TempData["oktaOrg"]";
+    var idTokenKey = 'idToken';
+
+
+    function getParameterByName(name, url) {
+        // Set default for url
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        // If not found
+        if (!results) return null;
+        // If no value found
+        if (!results[2]) return '';
+        // Result found... just decode 1st.
+        console.log('name', results[2]);
+        var parameter_decoded = decodeURIComponent(results[2]);
+        console.log('parameter_decoded', parameter_decoded);
+        return decodeURIComponent(parameter_decoded);
+    }
+
+    //  Handle Query Parameters
+    var relayState = getParameterByName('RelayState');
+    if (relayState != null)
+        console.log('relayState', relayState);
+
+
+        //setup options for widget
+    var options = {
+        "baseUrl": myOktaOrg,
+        "logo": "/img/logo_widgico.png",
+        "features": {
+            "router": true,
+            "rememberMe": false,
+            "multiOptionalFactorEnroll": false
+        },
+        // OIDC options: Choose flow type here based on app needs. Id_token = implicit  code = authorization code
+        clientId: clientId,
+        redirectUri: redirectUri,
+        authScheme: 'OAUTH2',
+        authParams: {
+            responseType: 'id_token',
+            responseMode: 'okta_post_method',
+            scope: [
+              'openid',
+              'profile'
+            ]
+        },
+         "processCreds": function(creds, myCallback) {
+            $.ajax({
+                method: "POST",
+                url: "/api/ValidateUser",
+                contentType: "application/x-www-form-urlencoded",
+                accept: 'application/json',
+                data: {
+                    username: creds.username,
+                    password: creds.password
+                },
+                success: function(myData) {
+                    console.log("processCreds completed ");
+                    console.log("Status: " + myData.status);
+                    if (myData.isPasswordInOkta == "true") {
+                        console.log("isPasswordInOkta == true");
+                    } else {
+                        console.log("isPasswordInOkta == false");
+                    }
+                    myCallback();
+                },
+                error: function(error) {
+                    console.log("processCreds error ");
+                    myCallback();
+                }
+            });
+        }
+    };
+   
+    var oktaSignIn = new OktaSignIn(options);
+
+
+    //declare okta widget 
+    function showLoginWidget() {
+        oktaSignIn.renderEl(
+          { el: '#okta-login-container' },
+            function (res) {
+              if (res.status === 'SUCCESS') {
+                  console.log("login successful");
+                  console.log(res);
+                  var id_token = res.idToken;
+                  console.log('id token: ' + id_token);
+                  //res.session.setCookieAndRedirect(options.baseUrl + '/app/UserHome');
+                  document.getElementById("idToken").value = id_token;
+                  document.getElementById("relayState").value = relayState;
+                  // Check browser support
+                  if (typeof (Storage) !== "undefined") {
+                      // Store
+                      console.log("stored data is enabled");
+                      sessionStorage.setItem(idTokenKey, id_token);
+
+
+                  } else {
+                      console.log("Sorry, your browser does not support Web Storage...");
+
+                  }
+                  //redirect to AltLanding
+                  document.getElementById("oidcImplicit").submit();
+              }
+          },
+    // Failure callback (invoked if the authentication is unsuccessful
+    // or if there is a failure on authentication)
+            function (err) {
+                // handleErrors(err);
+                debugger;
+                console.log("failed to login: %o", err);
+            }
+        );
+    }
+
+    // Initiate the login Widget
+    showLoginWidget();
+
+
+    </script>
+</body>
+</html>
+
+
